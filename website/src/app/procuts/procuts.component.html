@@ -1,0 +1,88 @@
+<!---Header-->
+<nav class="navbar navbar-brand bg-light">
+  <div style="background-color: #13a9d6; padding: 20px" class="container-fluid">
+    <span routerLink="product" style="color: white" class="navbar-brand mb-0 h1"
+      >Rolex Stores</span
+    >
+
+    <div>
+      <a routerLink="/cart"
+        ><i>
+          <mat-icon style="color: white">shopping_cart</mat-icon>
+        </i></a
+      ><span
+        style="margin-right: 10px; font-size: 10px"
+        class="badge bg-danger"
+        >{{ totalItem }}</span
+      >
+      <i><mat-icon style="color: white">account_circle</mat-icon></i
+      ><span
+        style="
+          margin-left: 10px;
+          color: white;
+          text-align: center;
+          padding-bottom: 5px;
+        "
+        >Pranaw</span
+      >
+    </div>
+  </div>
+</nav>
+<!--Second Header-->
+
+<nav class="navbar navbar-light bg-light">
+  <div>
+    <input
+      [(ngModel)]="searchTerm"
+      (keyup)="search($event)"
+      class="form-control mr-sm-2"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+      style="margin-left: 400px; border-radius: 0%; position: static"
+    />
+  </div>
+  <i>
+    <mat-icon style="margin-right: 588px; margin-top: 5px; color: #13a9d6"
+      >search</mat-icon
+    >
+  </i>
+</nav>
+
+<!--Product List-->
+
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let item of productList | filter: searchKey:'title'"
+      ><div class="card col-md-3">
+        <img src="{{ item.image }}" alt="" />
+        <h5
+          style="
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100ch;
+          "
+        >
+          {{ item.title }}
+        </h5>
+        <p
+          style="
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100ch;
+          "
+        >
+          {{ item.description }}
+        </p>
+        <p><strong>Price: </strong>$ {{ item.price }}</p>
+
+        <button class="btn btn-primary" (click)="addtocart(item)">
+          Add to cart
+        </button>
+      </div></ng-container
+    >
+  </div>
+</div>
+<router-outlet></router-outlet>

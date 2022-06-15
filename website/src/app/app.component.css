@@ -1,0 +1,10 @@
+.text {
+  border-radius: 3px;
+  width: 600px;
+  margin-left: 20px;
+}
+.input-box {
+  border-radius: 3px;
+  width: 600px;
+  padding-top: 7px;
+}
